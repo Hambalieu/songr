@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Albums added details</title>
+    <link rel="stylesheet" href="/css/songr.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shizuru&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<h1>Albums</h1>
+<div th:each="album : ${albums}" >
+        <ul style="list-style: none;">
+            <li>
+                <img th:src="${album.imageUrl}" alt="cover image" width="400">
+            </li>
+            <li><span th:text="${album.title}"></span></li>
+            <li><span th:text="${album.artist}"></span></li>
+            <li><span th:id="${album.songCount}" th:text="${album.songCount}"></span> songs</li>
+            <li><span th:id="${album.length}" th:text="${album.length}"></span> seconds</li>
+
+        </ul>
+</div>
+<div th:each="album : ${albums1}" >
+    <ul style="list-style: none;">
+        <li>
+            <img th:src="${album.imageUrl}" alt="cover image" width="400">
+        </li>
+        <li><span th:text="${album.title}"></span></li>
+        <li><span th:text="${album.artist}"></span></li>
+        <li><span th:id="${album.songCount}" th:text="${album.songCount}"></span> songs</li>
+        <li><span th:id="${album.length}" th:text="${album.length}"></span> seconds</li>
+
+    </ul>
+</div>
+<div th:each="album : ${albums2}" >
+    <ul style="list-style: none;">
+        <li>
+            <img th:src="${album.imageUrl}" alt="cover image" width="400">
+        </li>
+        <li><span  th:text="${album.title}"></span></li>
+        <li><span th:text="${album.artist}"></span></li>
+        <li><span th:id="${album.songCount}" th:text="${album.songCount}"></span> songs</li>
+        <li><span th:id="${album.length}" th:text="${album.length}"></span> seconds</li>
+
+    </ul>
+</div>
+</body>
+</html>
