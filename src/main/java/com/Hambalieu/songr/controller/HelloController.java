@@ -22,9 +22,9 @@ public class HelloController {
         return words.toUpperCase();
     }
 
-    @GetMapping("/")
-    public String getRootPage(){
-        return"index.html";
-    }
+//    @GetMapping("/")
+//    public String getRootPage(){
+//        return"index.html";
+//    }
 
 }

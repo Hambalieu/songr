@@ -1,11 +1,23 @@
 package com.Hambalieu.songr.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Album {
-    private String title;
-    private String artist;
-    private int songCount;
-    private double length;
-    private String imageUrl;
+
+    public Album(){
+
+    }
+    @Id
+    //how to generate Id on the backend
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+     long id;
+     @Column(columnDefinition="text")
+     String title;
+     String artist;
+     int songCount;
+     double length;
+     String imageUrl;
 
     public Album(String title, String artist, int songCount, double length, String imageUrl) {
         this.title = title;
