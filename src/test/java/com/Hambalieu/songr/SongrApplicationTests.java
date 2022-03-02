@@ -22,23 +22,7 @@ class songrApplicationTests{
 		assertNotNull(testController, "Test controller was null");
 	}
 
-//
-//	@Test
-//	void testSetCapitalize_SingleWordToUpperCase() {
-//		assertEquals(
-//				"testSetCapitalize_SingleWordToUpperCase should return: ",
-//				"WORD",
-//				setCapitalize("word")
-//		);
-//	}
-//	@Test
-//	void testSetCapitalize_MultipleWordsToUpperCase() {
-//		assertEquals(
-//				"testSetCapitalize_MultipleWordToUpperCase should return: ",
-//				"MULTIPLE WORDS CAPITALIZED",
-//				setCapitalize("multIplE WoRds cApitaliZED")
-//		);
-//	}
+
 
 
 }
