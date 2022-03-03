@@ -5,5 +5,5 @@ import com.Hambalieu.songr.model.Song;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SongRepository extends JpaRepository<Song, Long> {
-    public Song findSongByTitleandAlbum(String title, Album album);
+//    public Song findSongByTitleandAlbum(String title, Album album);
 }

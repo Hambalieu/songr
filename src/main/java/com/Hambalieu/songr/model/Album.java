@@ -6,8 +6,6 @@ import java.util.List;
 @Entity
 public class Album {
 
-
-
     public Album(){
 
     }
@@ -18,12 +16,20 @@ public class Album {
      @Column(columnDefinition="text")
      String title;
      String artist;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "album")
-    List<Song>songsInAlbum;
      int songCount;
      double length;
      String imageUrl;
+
+     @OneToMany(mappedBy = "songInAlbum", cascade=CascadeType.ALL)
+     List<Song>songInThisAlbum;
+
+    public long getId() {
+        return id;
+    }
+
+    public List<Song> getSongInThisAlbum() {
+        return songInThisAlbum;
+    }
 
     public Album(String title, String artist, int songCount, double length, String imageUrl) {
         this.title = title;

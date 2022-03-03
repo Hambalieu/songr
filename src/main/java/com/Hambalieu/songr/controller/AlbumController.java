@@ -5,9 +5,7 @@ import com.Hambalieu.songr.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 
@@ -27,20 +25,35 @@ public class AlbumController {
     }
 
     @PostMapping("/albums")
-    public RedirectView addAlbum(String title,String artist, int songCount, double length, String imageUrl)
+    public RedirectView addAlbum(String title, String artist, int songCount, double length, String imageUrl)
     {
         Album addYourAlbum = new Album(title, artist, songCount, length, imageUrl);
         albumRepository.save(addYourAlbum);
         return new RedirectView("/albums");
     }
 
-    @GetMapping("/view-album/{title}")
-    public String viewAlbumWindow(@PathVariable String title, Model m){
-        Album albumToView = albumRepository.findByTitle(title);
-        m.addAttribute("album", albumToView);
-        m.addAttribute("songs", albumToView.getSongsOfThisAlbum());
-        return "view-album.html";
+    @GetMapping("/edit-album/{title}")
+    public String editAlbumView(@PathVariable String title, Model m){
+        Album albumToEdit = albumRepository.findByTitle(title);
+        m.addAttribute("album", albumToEdit);
+      return "edit-album.html";
+    }
+    @PutMapping ("/edit-album")
+    public RedirectView editAlbum(long id, String title, String artist, int songCount, double length, String imageUrl){
+        Album  albumToEdit = albumRepository.findById(id).orElseThrow();
+        albumToEdit.setTitle(title);
+        albumToEdit.setArtist(artist);
+        albumToEdit.setSongCount(songCount);
+        albumToEdit.setLength(length);
+        albumToEdit.setImageUrl(imageUrl);
+        albumRepository.save(albumToEdit);
+        return new RedirectView("/albums");
     }
 
+    @DeleteMapping("/delete-album")
+    public  RedirectView deleteAlbum(long id){
+       albumRepository.deleteById(id);
+       return new RedirectView("/albums");
+    }
 
 }

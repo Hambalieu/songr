@@ -10,26 +10,29 @@ public class Song {
     String title;
     int length;
     int trackNumber;
+
     @ManyToOne
-    String album;
+    Album songInAlbum;
 
-    public Song(){
+    public Song()
+    {
 
     }
 
 
-    public Song(String title, int length, int trackNumber, String album) {
+
+    public Song(String title, int length, int trackNumber) {
         this.title = title;
-        this.length = length * 60;
+        this.length = length;
         this.trackNumber = trackNumber;
-        this.album = album;
+
     }
-    public Album getSongAtAlbum(){
-        return songAtAlbum;
+    public Album getSongInAlbum() {
+        return songInAlbum;
     }
 
-    public void setSongAtAlbum(Album songAtAlbum){
-        this.songAtAlbum = songAtAlbum;
+    public void setSongInAlbum(Album songInAlbum) {
+        this.songInAlbum = songInAlbum;
     }
 
     public long getId() {
@@ -60,11 +63,5 @@ public class Song {
         this.trackNumber = trackNumber;
     }
 
-    public String getAlbum() {
-        return album;
-    }
 
-    public void setAlbum(String album) {
-        this.album = album;
-    }
 }
