@@ -14,16 +14,23 @@
 <body>
 
 <h1>Albums</h1>
-<div th:each="album : ${albums}" >
-        <ul style="list-style: none;">
-            <li>
+<div >
+        <ul th:each="album : ${albums}" style="list-style: none;">
+            <li >
                 <img th:src="${album.imageUrl}" alt="cover image" width="400" >
             </li>
             <li><span th:text="${album.title}"></span></li>
             <li><span th:text="${album.artist}"></span></li>
             <li><span th:id="${album.songCount}" th:text="${album.songCount}"></span> songs</li>
             <li><span th:id="${album.length}" th:text="${album.length}"></span> seconds</li>
-
+            <br><a th:href="${'/edit-album/' + album.title}">Edit Album</a>
+            <br><br>
+            <li th:each="song : ${album.songInThisAlbum}">
+                <div th:text="${'Song Title: ' + song.title}"></div>
+                <br><div th:text="${'Song Length: ' + song.length}"></div>
+                <br><div th:text="${'TrackNumber: ' + song.trackNumber}"></div>
+            </li>
+            <br><br>
         </ul>
 </div>
 <form action="/albums" method="post">

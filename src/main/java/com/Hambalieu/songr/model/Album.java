@@ -1,6 +1,7 @@
 package com.Hambalieu.songr.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -18,6 +19,17 @@ public class Album {
      int songCount;
      double length;
      String imageUrl;
+
+     @OneToMany(mappedBy = "songInAlbum", cascade=CascadeType.ALL)
+     List<Song>songInThisAlbum;
+
+    public long getId() {
+        return id;
+    }
+
+    public List<Song> getSongInThisAlbum() {
+        return songInThisAlbum;
+    }
 
     public Album(String title, String artist, int songCount, double length, String imageUrl) {
         this.title = title;
