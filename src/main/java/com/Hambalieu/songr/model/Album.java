@@ -1,9 +1,12 @@
 package com.Hambalieu.songr.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
+
+
 
     public Album(){
 
@@ -15,6 +18,9 @@ public class Album {
      @Column(columnDefinition="text")
      String title;
      String artist;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "album")
+    List<Song>songsInAlbum;
      int songCount;
      double length;
      String imageUrl;

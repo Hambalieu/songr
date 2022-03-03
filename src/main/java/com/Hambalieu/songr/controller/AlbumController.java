@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -32,4 +33,14 @@ public class AlbumController {
         albumRepository.save(addYourAlbum);
         return new RedirectView("/albums");
     }
+
+    @GetMapping("/view-album/{title}")
+    public String viewAlbumWindow(@PathVariable String title, Model m){
+        Album albumToView = albumRepository.findByTitle(title);
+        m.addAttribute("album", albumToView);
+        m.addAttribute("songs", albumToView.getSongsOfThisAlbum());
+        return "view-album.html";
+    }
+
+
 }
